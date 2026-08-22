@@ -1,0 +1,178 @@
+@property --rotate {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --bg-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --bg-x {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --glow-translate-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --bg-size {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --glow-opacity {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --glow-blur {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --glow-scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 2;
+}
+
+.glow-container {
+  --card-color: #0b0f19;
+  --card-radius: 16px;
+  --border-width: 1px;
+  --bg-size: 1;
+  --rotate: 0;
+  --animation-speed: 6s;
+  --interaction-speed: 0.55s;
+  --glow-scale: 2.8;
+  --scale-factor: 1.2;
+  --glow-blur: 8;
+  --glow-opacity: 0.6;
+
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  border-radius: var(--card-radius);
+  box-sizing: border-box;
+  overflow: hidden; /* Clips rotating light trail inside card boundaries to prevent page scrollbars */
+}
+
+.glow-container:before,
+.glow-container:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  pointer-events: none;
+}
+
+.glow-content {
+  position: relative;
+  background: var(--card-color);
+  border-radius: calc(var(--card-radius) - 1px);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.glow-content:before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--card-radius);
+  z-index: -1;
+  background: radial-gradient(
+    60% 60% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
+    rgba(239, 68, 68, 0.5) 0%,
+    rgba(30, 58, 138, 0.3) 45%,
+    transparent 100%
+  );
+  animation: rotate-bg var(--animation-speed) linear infinite;
+  transition: --bg-size var(--interaction-speed) ease;
+}
+
+/* Light Trail Element - Contained within Overflow Clip */
+.glow {
+  --glow-translate-y: 0;
+  display: block;
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  animation: rotate var(--animation-speed) linear infinite;
+  transform: rotateZ(calc(var(--rotate) * 1deg));
+  transform-origin: center;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  margin-top: -160px;
+  margin-left: -160px;
+}
+
+.glow:after {
+  content: "";
+  display: block;
+  z-index: -2;
+  filter: blur(calc(var(--glow-blur) * 8px));
+  width: 180%;
+  height: 180%;
+  left: -40%;
+  top: -40%;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.55) 0%, rgba(30, 58, 138, 0.25) 60%, transparent 100%);
+  position: relative;
+  border-radius: 50%;
+  transform: scaleY(calc(var(--glow-scale) * var(--scale-factor) / 1.1))
+             scaleX(calc(var(--glow-scale) * var(--scale-factor) * 2.8))
+             translateY(calc(var(--glow-translate-y) * 1%));
+  opacity: var(--glow-opacity);
+}
+
+.glow-container.always-active .glow-content {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+.glow-container.always-active .glow-content:before {
+  --bg-size: 20;
+}
+
+@keyframes rotate-bg {
+  0% {
+    --bg-x: 0;
+    --bg-y: 0;
+  }
+  25% {
+    --bg-x: 100;
+    --bg-y: 0;
+  }
+  50% {
+    --bg-x: 100;
+    --bg-y: 100;
+  }
+  75% {
+    --bg-x: 0;
+    --bg-y: 100;
+  }
+  100% {
+    --bg-x: 0;
+    --bg-y: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    --rotate: -70;
+    --glow-translate-y: -65;
+  }
+  to {
+    --rotate: 290;
+    --glow-translate-y: -65;
+  }
+}

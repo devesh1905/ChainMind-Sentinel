@@ -1,0 +1,36 @@
+# Node dependencies & logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python & ML cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+venv/
+.venv/
+env/
+
+# Hardhat & Solidity artifacts
+chainmind-contract/artifacts/
+chainmind-contract/cache/
+chainmind-contract/typechain-types/
+
+# Frontend build
+chainmind-frontend/dist/
+chainmind-frontend/dist-ssr/
+*.local
+
+# Environment variables
+.env
+*.env
+!.env.example
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
