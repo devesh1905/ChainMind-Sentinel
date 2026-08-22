@@ -34,5 +34,7 @@ chainmind-frontend/dist-ssr/
 Thumbs.db
 .vscode/
 .idea/
-prd*.md
+# Local PowerPoint Pitch Deck
+ppt/
+
 
