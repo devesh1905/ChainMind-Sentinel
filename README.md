@@ -1,3 +1,5 @@
+
+
 # ChainMind Sentinel
 
 Real-time AI-powered security gate for Ethereum transactions — detects suspicious behavior using machine learning and enforces blocking decisions on-chain via a smart contract, with full auditability.
@@ -47,6 +49,9 @@ DeFi exploits (flash loans, reentrancy) happen within seconds of deployment — 
 - **AI-generated explanations** — beyond rule-based flags, a Gemini-powered explanation is generated for every blocked transaction in plain, analyst-style language
 - **Live dashboard** — Socket.io-powered real-time feed, stats bar, and one-click demo triggers ("Quick Demo" for 1 transaction, "Full Demo" for a 6-transaction batch mixing normal and attack patterns)
 - **Telegram alerting** — instant push notification whenever a transaction is blocked
+
+## Demo Video 
+https://github.com/user-attachments/assets/ff61201f-cb23-42b8-b5ac-9844c470ed0b
 
 ## Tech Stack
 
