@@ -51,6 +51,7 @@ DeFi exploits (flash loans, reentrancy) happen within seconds of deployment — 
 - **Telegram alerting** — instant push notification whenever a transaction is blocked
 
 ## Demo Video 
+
 https://github.com/user-attachments/assets/ff61201f-cb23-42b8-b5ac-9844c470ed0b
 
 ## Tech Stack
@@ -153,3 +154,11 @@ Each triggers: ML classification → on-chain `reviewTransaction` call → live 
 - Single-chain (Ethereum Sepolia) by design — multi-chain support (Polygon/Arbitrum) was scoped out to prioritize a complete, polished core system within the time constraint.
 - Uses synthetic training data (per project constraints) rather than live historical exploit data.
 - Transaction monitoring is demonstrated via a replay/batch mechanism rather than live mempool listening, for demo reliability and consistency.
+
+## Team
+ 
+- Deveshwar S
+- Gnana Deepika Komati
+- Harisabari D
+- Nitesh Solanki
+- Priyanga M
